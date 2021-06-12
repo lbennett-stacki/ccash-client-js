@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/cjs",
+    "target": "es2015",
+    "module": "commonjs",
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "paths": {
+    "@/*": ["./src/*"],
+    "@test/*": ["./test/*"]
+  }
+}

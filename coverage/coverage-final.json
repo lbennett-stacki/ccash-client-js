@@ -1,0 +1,2 @@
+{"/Users/jared/workspace/ccash/ccash-client-js/src/CCashClient.ts": {"path":"/Users/jared/workspace/ccash/ccash-client-js/src/CCashClient.ts","statementMap":{"0":{"start":{"line":3,"column":4},"end":{"line":3,"column":31}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":2,"column":2},"end":{"line":2,"column":3}},"loc":{"start":{"line":2,"column":41},"end":{"line":4,"column":3}},"line":2}},"branchMap":{},"s":{"0":1},"f":{"0":1},"b":{},"_coverageSchema":"1a1c01bbd47fc00a2c39e90264f33305004495a9","hash":"7e5cc1d64a6e2b02fa1126ff1bf2adeb4d2be1b8"}
+}
