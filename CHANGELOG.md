@@ -1,5 +1,19 @@
 # CHANGELOG
 
+# [1.4.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.3.0...v1.4.0) (2021-06-13)
+
+
+### Bug Fixes
+
+* add password in body to adminAddUser ([80ca0b6](https://github.com/LukeeeeBennett/ccash-client-js/commit/80ca0b6800725b6e814a3a07974da796caa03c6a))
+* types ([5bd0820](https://github.com/LukeeeeBennett/ccash-client-js/commit/5bd08201d75acb83574ac35e9c0317e835713746))
+
+
+### Features
+
+* release ([2663b24](https://github.com/LukeeeeBennett/ccash-client-js/commit/2663b2422057c0ebe5d054aee0d1793973b6bbb4))
+* release ([a443b6b](https://github.com/LukeeeeBennett/ccash-client-js/commit/a443b6bba10c5d512b92d02bdd0dc80a29519e19))
+
 # [1.3.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.2.0...v1.3.0) (2021-06-13)
 
 
