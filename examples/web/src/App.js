@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { CCashClient } from 'ccash-client-js';
 import './App.css';
 
-const client = new CCashClient();
+const client = new CCashClient(
+  process.env.CCASH_API_BASE_URL || 'https://wtfisthis.tech/BankF'
+);
 
 function App() {
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     (async function getBalance() {
-      setBalance(await client.balance('twix'));
+      setBalance(await client.balance('blinkblinko'));
     })();
   }, []);
 

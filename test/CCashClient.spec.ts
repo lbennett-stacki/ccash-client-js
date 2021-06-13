@@ -12,7 +12,7 @@ describe('CCashClient', () => {
 
     describe('balance', () => {
       it('returns an integer', async () => {
-        expect(await client.balance('twix')).toEqual(10);
+        expect(await client.balance('blinkblinko')).toEqual(10);
       });
     });
   });

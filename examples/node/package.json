@@ -7,6 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ccash-client-js": "file:../.."
+    "ccash-client-js": "file:../..",
+    "dotenv": "^10.0.0"
   }
 }

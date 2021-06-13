@@ -3,11 +3,13 @@
     "outDir": "./dist/cjs",
     "target": "es2015",
     "module": "commonjs",
+    "declaration": true,
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"],
   "paths": {

@@ -15,9 +15,11 @@ npm install ccash-client-js
 ```js
 import { CCashClient } from 'ccash-client-js';
 
+process.env.CCASH_API_BASE_URL = 'https://your.ccash.api';
+
 const client = new CCashClient();
 
-client.balance('twix');
+console.log(await client.balance('blinkblinko'));
 ```
 
 ## Examples
