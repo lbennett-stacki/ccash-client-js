@@ -7,7 +7,7 @@ TypeScript/JavaScript client library for [CCash](https://github.com/EntireTwix/C
 ```
 yarn add ccash-client-js
 # or
-npm install ccash-client-js
+npm install --save ccash-client-js
 ```
 
 ## Usage
