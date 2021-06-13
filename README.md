@@ -39,9 +39,3 @@ Run `yarn start` to run the examples from their corresponding directory.
 - Format source code w/ prettier: `yarn format`
 
 - Test source units w/ jest: `yarn test`
-
-## TODO
-
-- Add CI/CD
-
-- Publish to npm
