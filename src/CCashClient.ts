@@ -56,11 +56,7 @@ export class CCashClient implements ICCashClient {
 
   changePassword(user: string, pass: string, newPass: string): Promise<User> {
     return this.http
-      .patch(
-        `/${user}/pass/change`,
-        { password: newPass },
-        { headers: { Password: pass } }
-      )
+      .patch(`/${user}/pass/change`, newPass, { headers: { Password: pass } })
       .then(
         (response) =>
           this.handleError(response) || this.serialize(User, { user })
@@ -122,14 +118,10 @@ export class CCashClient implements ICCashClient {
     initialBalance: number
   ): Promise<User> {
     return this.http
-      .post(
-        `/user/${user}`,
-        { password: initialPass },
-        {
-          headers: { Password: pass },
-          params: { init_bal: initialBalance },
-        }
-      )
+      .post(`/user/${user}`, initialPass, {
+        headers: { Password: pass },
+        params: { init_bal: initialBalance },
+      })
       .then(
         (response) =>
           this.handleError(response) || this.serialize(User, { user })
