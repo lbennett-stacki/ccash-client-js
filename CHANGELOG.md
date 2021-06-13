@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# [1.6.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.5.0...v1.6.0) (2021-06-13)
+
+
+### Bug Fixes
+
+* correct password as body calls ([6fd7a91](https://github.com/LukeeeeBennett/ccash-client-js/commit/6fd7a91422c74f5b0c2bea951db160e3d6bb4dfc))
+
+
+### Features
+
+* release ([39dad3a](https://github.com/LukeeeeBennett/ccash-client-js/commit/39dad3a037c6151915288401f68ecdad2b2ac0f4))
+
 # [1.5.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.4.0...v1.5.0) (2021-06-13)
 
 
