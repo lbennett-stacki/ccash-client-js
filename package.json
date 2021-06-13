@@ -6,7 +6,7 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/github:LukeeeeBennett/ccash-client-js",
+  "repository": "https://github.com/LukeeeeBennett/ccash-client-js",
   "author": "Luke Bennett <lukeeeebennettplus@gmail.com>",
   "license": "MIT",
   "private": false,
