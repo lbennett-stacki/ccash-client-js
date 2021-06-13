@@ -42,8 +42,6 @@ Run `yarn start` to run the examples from their corresponding directory.
 
 ## TODO
 
-- Start/finish client implementation
-
 - Add CI/CD
 
 - Publish to npm
