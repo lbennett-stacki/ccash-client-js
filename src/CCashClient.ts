@@ -26,15 +26,10 @@ export class CCashClient implements ICCashClient {
       .then((response) => this.handleError(response) || response.data.value);
   }
 
-  log(
-    user: string,
-    pass: string,
-    transactionCount: number = 10
-  ): Promise<number[]> {
+  log(user: string, pass: string): Promise<number[]> {
     return this.http
       .get(`/${user}/bal`, {
         headers: { Password: pass },
-        params: { n: transactionCount },
       })
       .then((response) => this.handleError(response) || response.data.value);
   }

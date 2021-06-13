@@ -5,7 +5,7 @@ export { User };
 export interface ICCashClient {
   // Usage
   balance(user: string): Promise<number>;
-  log(user: string, pass: string, transactionCount?: number): Promise<number[]>;
+  log(user: string, pass: string): Promise<number[]>;
   sendFunds(
     user: string,
     pass: string,
