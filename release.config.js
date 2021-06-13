@@ -1,7 +1,7 @@
 module.exports = {
   branches: ['stable'],
-  plugins: {
-    commitAnalyzer: [
+  plugins: [
+    [
       '@semantic-release/commit-analyzer',
       {
         releaseRules: [
@@ -11,21 +11,21 @@ module.exports = {
         ],
       },
     ],
-    releaseNotes: '@semantic-release/release-notes-generator',
-    changelog: [
+    '@semantic-release/release-notes-generator',
+    [
       '@semantic-release/changelog',
       {
         changelogFile: 'CHANGELOG.md',
         changelogTitle: '# CHANGELOG',
       },
     ],
-    github: '@semantic-release/github',
-    npm: '@semantic-release/npm',
-    git: [
+    '@semantic-release/github',
+    '@semantic-release/npm',
+    [
       '@semantic-release/git',
       {
         assets: ['CHANGELOG.md', 'package.json'],
       },
     ],
-  },
+  ],
 };
