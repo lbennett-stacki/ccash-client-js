@@ -1,5 +1,18 @@
 # CHANGELOG
 
+# [1.5.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.4.0...v1.5.0) (2021-06-13)
+
+
+### Bug Fixes
+
+* remove log transactionCount ([a26b61a](https://github.com/LukeeeeBennett/ccash-client-js/commit/a26b61aeecda844dc2e9e043aeeacad71d813dd7))
+
+
+### Features
+
+* add ping ([dbe1008](https://github.com/LukeeeeBennett/ccash-client-js/commit/dbe1008850d68ee871b153fbca1c410d668601e9))
+* remove WrongAdminPassword exception ([0a1d358](https://github.com/LukeeeeBennett/ccash-client-js/commit/0a1d35812d31032e114fbfb983e39f4a3cc7775a))
+
 # [1.4.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.3.0...v1.4.0) (2021-06-13)
 
 
