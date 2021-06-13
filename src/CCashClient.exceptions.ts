@@ -24,12 +24,6 @@ export class InvalidRequestException extends Exception {
   }
 }
 
-export class WrongAdminPasswordException extends Exception {
-  constructor() {
-    super('wrong admin password');
-  }
-}
-
 export class NameTooLongException extends Exception {
   constructor() {
     super('name too long');
@@ -52,7 +46,6 @@ export enum ErrorCodes {
   UserNotFound = -1,
   WrongPassword = -2,
   InvalidRequest = -3,
-  WrongAdminPassword = -4,
   NameTooLong = -5,
   UserAlreadyExists = -6,
   InsufficientFunds = -7,
@@ -62,7 +55,6 @@ export const ExceptionMap = {
   [ErrorCodes.UserNotFound]: UserNotFoundException,
   [ErrorCodes.WrongPassword]: WrongPasswordException,
   [ErrorCodes.InvalidRequest]: InvalidRequestException,
-  [ErrorCodes.WrongAdminPassword]: WrongAdminPasswordException,
   [ErrorCodes.NameTooLong]: NameTooLongException,
   [ErrorCodes.UserAlreadyExists]: UserAlreadyExistsException,
   [ErrorCodes.InsufficientFunds]: InsufficientFundsException,
