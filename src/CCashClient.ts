@@ -73,7 +73,7 @@ export class CCashClient implements Partial<ICCashClient> {
       );
   }
 
-  setBal(user: string, pass: string, amount: number): Promise<number> {
+  setBalance(user: string, pass: string, amount: number): Promise<number> {
     return this.http
       .patch(`/admin/${user}/bal`, undefined, {
         headers: { Password: pass },
@@ -120,13 +120,18 @@ export class CCashClient implements Partial<ICCashClient> {
   adminAddUser(
     user: string,
     pass: string,
+    initialPass: string,
     initialBalance: number
   ): Promise<User> {
     return this.http
-      .post(`/user/${user}`, undefined, {
-        headers: { Password: pass },
-        params: { init_bal: initialBalance },
-      })
+      .post(
+        `/user/${user}`,
+        { password: initialPass },
+        {
+          headers: { Password: pass },
+          params: { init_bal: initialBalance },
+        }
+      )
       .then(
         (response) =>
           this.handleError(response) || this.serialize(User, { user })

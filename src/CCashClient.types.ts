@@ -16,7 +16,7 @@ export interface ICCashClient {
 
   // Meta usage
   changePassword(user: string, pass: string, newPass: string): Promise<User>;
-  setBal(user: string, pass: string, amount: number): Promise<number>;
+  setBalance(user: string, pass: string, amount: number): Promise<number>;
 
   // System usage
   help(): Promise<string>;
@@ -29,6 +29,7 @@ export interface ICCashClient {
   adminAddUser(
     user: string,
     pass: string,
+    initialPass: number,
     initialBalance: number
   ): Promise<User>;
   deleteUser(user: string, pass: string): Promise<User>;
