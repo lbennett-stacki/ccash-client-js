@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "JS HTTP client for CCash",
   "main": "./dist/cjs",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "dist"
   ],
