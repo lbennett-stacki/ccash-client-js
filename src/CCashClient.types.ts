@@ -29,7 +29,7 @@ export interface ICCashClient {
   adminAddUser(
     user: string,
     pass: string,
-    initialPass: number,
+    initialPass: string,
     initialBalance: number
   ): Promise<User>;
   deleteUser(user: string, pass: string): Promise<User>;

@@ -7,8 +7,7 @@ import {
   ErrorCodes,
 } from './CCashClient.exceptions';
 
-export class CCashClient implements Partial<ICCashClient> {
-  /** TODO: not partial **/
+export class CCashClient implements ICCashClient {
   http: AxiosInstance;
 
   constructor(baseURL: string | undefined = process.env.CCASH_API_BASE_URL) {
