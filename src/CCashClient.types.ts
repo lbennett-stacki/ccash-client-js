@@ -20,6 +20,7 @@ export interface ICCashClient {
 
   // System usage
   help(): Promise<string>;
+  ping(): Promise<boolean>;
   close(pass: string): Promise<boolean>;
   contains(user: string): Promise<boolean>;
   adminVerifyPass(pass: string): Promise<boolean>;

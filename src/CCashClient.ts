@@ -85,6 +85,10 @@ export class CCashClient implements ICCashClient {
     return this.http.get('/help').then((response) => response.data);
   }
 
+  ping(): Promise<boolean> {
+    return this.http.get('/ping').then((response) => response.data || false);
+  }
+
   close(pass: string): Promise<boolean> {
     return this.http
       .post('/close', undefined, { headers: { Password: pass } })
