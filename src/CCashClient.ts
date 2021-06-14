@@ -96,7 +96,7 @@ export class CCashClient implements ICCashClient {
 
   adminVerifyPass(pass: string): Promise<boolean> {
     return this.http
-      .get('/admin/verify')
+      .get('/admin/verify', { headers: { Password: pass } })
       .then(
         (response) => this.handleError(response) || response.data.value || false
       );
