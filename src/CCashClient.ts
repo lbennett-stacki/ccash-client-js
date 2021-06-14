@@ -41,7 +41,7 @@ export class CCashClient implements ICCashClient {
     amount: number
   ): Promise<number> {
     return this.http
-      .post(`/${user}/send/${to}`, {
+      .post(`/${user}/send/${to}`, undefined, {
         headers: { Password: pass },
         params: { amount },
       })
