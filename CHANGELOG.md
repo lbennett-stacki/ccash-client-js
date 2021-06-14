@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.6.1](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.0...v1.6.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* add Password header to adminVerifyPass ([58ce59c](https://github.com/LukeeeeBennett/ccash-client-js/commit/58ce59c9eeeea2d7952bb90e49335604b39bf374))
+
 # [1.6.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.5.0...v1.6.0) (2021-06-13)
 
 

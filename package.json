@@ -1,6 +1,6 @@
 {
   "name": "ccash-client-js",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "JS HTTP client for CCash",
   "main": "./dist",
   "publishConfig": {
