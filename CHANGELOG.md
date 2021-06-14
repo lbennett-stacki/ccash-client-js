@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.6.2](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.1...v1.6.2) (2021-06-14)
+
+
+### Bug Fixes
+
+* **sendFunds:** set body undefined ([91ccc83](https://github.com/LukeeeeBennett/ccash-client-js/commit/91ccc8324fabc5cba6f6411f8b8f84374262ffa8))
+
 ## [1.6.1](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.0...v1.6.1) (2021-06-14)
 
 
