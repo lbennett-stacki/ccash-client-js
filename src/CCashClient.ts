@@ -65,9 +65,8 @@ export class CCashClient implements ICCashClient {
 
   setBalance(user: string, pass: string, amount: number): Promise<number> {
     return this.http
-      .patch(`/admin/${user}/bal`, undefined, {
+      .patch(`/admin/${user}/bal/amount=${amount}`, undefined, {
         headers: { Password: pass },
-        params: { amount },
       })
       .then((response) => this.handleError(response) || amount);
   }
