@@ -1,3 +1,4 @@
 export * from './CCashClient';
 export * from './CCashClient.types';
-export * from './CCashClient.exceptions';
+export * from './Exception';
+export * from './exceptions';

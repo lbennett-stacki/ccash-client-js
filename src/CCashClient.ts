@@ -1,11 +1,36 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { plainToClass } from 'class-transformer';
-import { ICCashClient, User } from './CCashClient.types';
+import { validate } from 'class-validator';
+import debug from 'debug';
+import { ICCashClient } from './CCashClient.types';
+import {
+  ApiResponse,
+  ResponseValidatorConstructor,
+  NumberResponseValidator,
+  LogResponseValidator,
+  StringResponseValidator,
+} from './responses';
 import {
   BaseUrlMissingException,
+  InvalidResponseException,
+  ExceptionCodes,
   ExceptionMap,
   ErrorCodes,
-} from './CCashClient.exceptions';
+} from './exceptions';
+
+const log = debug('CCashClient');
+
+function LogCall(
+  target: any,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
+) {
+  const original = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+    log(`call ${propertyKey}`);
+    return original.apply(this, args);
+  };
+}
 
 export class CCashClient implements ICCashClient {
   http: AxiosInstance;
@@ -20,142 +45,167 @@ export class CCashClient implements ICCashClient {
     });
   }
 
+  @LogCall
   balance(user: string): Promise<number> {
     return this.http
       .get(`/${user}/bal`)
-      .then((response) => this.handleError(response) || response.data.value);
+      .then(async (response) => await this.handleResponse(response));
   }
 
-  log(user: string, pass: string): Promise<number[]> {
+  @LogCall
+  log(user: string, password: string): Promise<number[]> {
     return this.http
       .get(`/${user}/log`, {
-        headers: { Password: pass },
+        headers: { Password: password },
       })
-      .then((response) => this.handleError(response) || response.data.value);
+      .then((response) =>
+        this.handleResponse<number[]>(response, LogResponseValidator)
+      );
   }
 
+  @LogCall
   sendFunds(
     user: string,
-    pass: string,
+    password: string,
     to: string,
     amount: number
   ): Promise<number> {
     return this.http
       .post(`/${user}/send/${to}`, undefined, {
-        headers: { Password: pass },
+        headers: { Password: password },
         params: { amount: amount },
       })
-      .then((response) => this.handleError(response) || amount);
+      .then((response) => this.handleResponse(response));
   }
 
-  verifyPassword(user: string, pass: string): Promise<boolean> {
+  @LogCall
+  verifyPassword(user: string, password: string): Promise<number> {
     return this.http
-      .get(`/${user}/pass/verify`, { headers: { Password: pass } })
-      .then((response) => this.handleError(response) || response.data.value);
+      .get(`/${user}/pass/verify`, { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
   }
 
-  changePassword(user: string, pass: string, newPass: string): Promise<User> {
+  @LogCall
+  changePassword(
+    user: string,
+    password: string,
+    newPassword: string
+  ): Promise<number> {
     return this.http
-      .patch(`/${user}/pass/change`, newPass, { headers: { Password: pass } })
-      .then(
-        (response) =>
-          this.handleError(response) || this.serialize(User, { user })
-      );
+      .patch(`/${user}/pass/change`, newPassword, {
+        headers: { Password: password },
+      })
+      .then((response) => this.handleResponse(response));
   }
 
-  setBalance(user: string, pass: string, amount: number): Promise<number> {
+  @LogCall
+  setBalance(user: string, password: string, amount: number): Promise<number> {
     return this.http
       .patch(`/admin/${user}/bal`, undefined, {
-        headers: { Password: pass },
+        headers: { Password: password },
         params: { amount: amount },
       })
-      .then((response) => this.handleError(response) || amount);
+      .then((response) => this.handleResponse(response));
   }
 
+  @LogCall
   help(): Promise<string> {
-    return this.http.get('/help').then((response) => response.data);
-  }
-
-  ping(): Promise<boolean> {
-    return this.http.get('/ping').then((response) => response.data || false);
-  }
-
-  close(pass: string): Promise<boolean> {
     return this.http
-      .post('/close', undefined, { headers: { Password: pass } })
-      .then((response) => this.handleError(response) || true);
+      .get('/help')
+      .then((response) =>
+        this.handleResponse(response, StringResponseValidator)
+      );
   }
 
-  contains(user: string): Promise<boolean> {
+  @LogCall
+  ping(): Promise<'pong'> {
+    return this.http
+      .get('/ping')
+      .then((response) =>
+        this.handleResponse(response, StringResponseValidator)
+      );
+  }
+
+  @LogCall
+  close(password: string): Promise<number> {
+    return this.http
+      .post('/close', undefined, { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
+  }
+
+  @LogCall
+  contains(user: string): Promise<number> {
     return this.http
       .get(`/contains/${user}`)
-      .then(
-        (response) => this.handleError(response) || response.data.value || false
-      );
+      .then((response) => this.handleResponse(response));
   }
 
-  adminVerifyPass(pass: string): Promise<boolean> {
+  @LogCall
+  adminVerifyPassword(password: string): Promise<number> {
     return this.http
-      .get('/admin/verify', { headers: { Password: pass } })
-      .then(
-        (response) => this.handleError(response) || response.data.value || false
-      );
+      .get('/admin/verify', { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
   }
 
-  addUser(user: string, pass: string): Promise<User> {
+  @LogCall
+  addUser(user: string, password: string): Promise<number> {
     return this.http
-      .post(`/user/${user}`, undefined, { headers: { Password: pass } })
-      .then(
-        (response) =>
-          this.handleError(response) || this.serialize(User, { user })
-      );
+      .post(`/user/${user}`, undefined, { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
   }
 
+  @LogCall
   adminAddUser(
     user: string,
-    pass: string,
-    initialPass: string,
+    password: string,
+    initialPassword: string,
     initialBalance: number
-  ): Promise<User> {
+  ): Promise<number> {
     return this.http
-      .post(`/admin/user/${user}`, initialPass, {
-        headers: { Password: pass },
+      .post(`/admin/user/${user}`, initialPassword, {
+        headers: { Password: password },
         params: { init_bal: initialBalance },
       })
-      .then(
-        (response) =>
-          this.handleError(response) || this.serialize(User, { user })
-      );
+      .then((response) => this.handleResponse(response));
   }
 
-  deleteUser(user: string, pass: string): Promise<User> {
+  @LogCall
+  deleteUser(user: string, password: string): Promise<number> {
     return this.http
-      .delete(`/user/${user}`, { headers: { Password: pass } })
-      .then(
-        (response) =>
-          this.handleError(response) || this.serialize(User, { user })
-      );
+      .delete(`/user/${user}`, { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
   }
 
-  adminDeleteUser(user: string, pass: string): Promise<User> {
+  @LogCall
+  adminDeleteUser(user: string, password: string): Promise<number> {
     return this.http
-      .delete(`/admin/user/${user}`, { headers: { Password: pass } })
-      .then(
-        (response) =>
-          this.handleError(response) || this.serialize(User, { user })
-      );
+      .delete(`/admin/user/${user}`, { headers: { Password: password } })
+      .then((response) => this.handleResponse(response));
   }
 
-  private handleError(response: AxiosResponse<any>): false {
-    if (
-      response.data.value &&
-      Object.values(ErrorCodes).includes(response.data.value)
-    ) {
-      throw new ExceptionMap[response.data.value as ErrorCodes]();
+  private async handleResponse<T = number>(
+    response: AxiosResponse<ApiResponse<any>>,
+    Validator: ResponseValidatorConstructor = NumberResponseValidator
+  ): Promise<T> {
+    log('response:', response.data);
+    log('validator:', Validator);
+
+    const value = response.data?.value ?? response.data;
+
+    typeof value === 'number' && this.handleExceptions(value);
+
+    const errors = await validate(new Validator({ value }));
+
+    if (errors.length > 0) {
+      throw new InvalidResponseException(errors);
     }
 
-    return false;
+    return value;
   }
 
-  private serialize = plainToClass;
+  private handleExceptions(value: number): void {
+    if (value && Object.values(ExceptionCodes).includes(value)) {
+      throw new ExceptionMap[value as ExceptionCodes]();
+    }
+  }
 }

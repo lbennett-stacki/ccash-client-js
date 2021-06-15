@@ -1,38 +1,45 @@
-import { User } from './User';
-
-export { User };
-
 export interface ICCashClient {
   // Usage
   balance(user: string): Promise<number>;
-  log(user: string, pass: string): Promise<number[]>;
+  log(user: string, password: string): Promise<number[]>;
   sendFunds(
     user: string,
-    pass: string,
+    password: string,
     to: string,
     amount: number
   ): Promise<number>;
-  verifyPassword(user: string, pass: string): Promise<boolean>;
+  verifyPassword(user: string, password: string): Promise<number>;
 
   // Meta usage
-  changePassword(user: string, pass: string, newPass: string): Promise<User>;
-  setBalance(user: string, pass: string, amount: number): Promise<number>;
+  changePassword(
+    user: string,
+    password: string,
+    newPassword: string
+  ): Promise<number>;
+  setBalance(user: string, password: string, amount: number): Promise<number>;
 
   // System usage
   help(): Promise<string>;
-  ping(): Promise<boolean>;
-  close(pass: string): Promise<boolean>;
-  contains(user: string): Promise<boolean>;
-  adminVerifyPass(pass: string): Promise<boolean>;
+  ping(): Promise<'pong'>;
+  close(password: string): Promise<number>;
+  contains(user: string): Promise<number>;
+  adminVerifyPassword(password: string): Promise<number>;
 
   // User management
-  addUser(user: string, pass: string): Promise<User>;
+  addUser(user: string, password: string): Promise<number>;
   adminAddUser(
     user: string,
-    pass: string,
-    initialPass: string,
+    password: string,
+    initialPassword: string,
     initialBalance: number
-  ): Promise<User>;
-  deleteUser(user: string, pass: string): Promise<User>;
-  adminDeleteUser(user: string, pass: string): Promise<User>;
+  ): Promise<number>;
+  deleteUser(user: string, password: string): Promise<number>;
+  adminDeleteUser(user: string, password: string): Promise<number>;
+}
+
+export interface LogItem {
+  amount: number;
+  from: string;
+  to: string;
+  time: number;
 }

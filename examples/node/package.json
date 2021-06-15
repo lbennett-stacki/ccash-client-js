@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "ccash-client-js": "file:../..",
+    "debug": "^4.3.1",
     "dotenv": "^10.0.0"
   }
 }

@@ -22,6 +22,8 @@ const client = new CCashClient();
 console.log(await client.balance('blinkblinko'));
 ```
 
+Set environment variable `DEBUG=CCashClient` to log debug messages.
+
 ## Examples
 
 - Web (react) example can be found in [`examples/web`](./examples/web)
