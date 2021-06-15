@@ -28,7 +28,7 @@ export class CCashClient implements ICCashClient {
 
   log(user: string, pass: string): Promise<number[]> {
     return this.http
-      .get(`/${user}/bal`, {
+      .get(`/${user}/log`, {
         headers: { Password: pass },
       })
       .then((response) => this.handleError(response) || response.data.value);
@@ -43,7 +43,7 @@ export class CCashClient implements ICCashClient {
     return this.http
       .post(`/${user}/send/${to}`, undefined, {
         headers: { Password: pass },
-        params: { amount },
+        params: { amount: amount },
       })
       .then((response) => this.handleError(response) || amount);
   }
@@ -67,7 +67,7 @@ export class CCashClient implements ICCashClient {
     return this.http
       .patch(`/admin/${user}/bal`, undefined, {
         headers: { Password: pass },
-        params: { amount },
+        params: { amount: amount },
       })
       .then((response) => this.handleError(response) || amount);
   }
@@ -118,7 +118,7 @@ export class CCashClient implements ICCashClient {
     initialBalance: number
   ): Promise<User> {
     return this.http
-      .post(`/user/${user}`, initialPass, {
+      .post(`/admin/user/${user}`, initialPass, {
         headers: { Password: pass },
         params: { init_bal: initialBalance },
       })
@@ -139,7 +139,7 @@ export class CCashClient implements ICCashClient {
 
   adminDeleteUser(user: string, pass: string): Promise<User> {
     return this.http
-      .delete(`/user/${user}`, { headers: { Password: pass } })
+      .delete(`/admin/user/${user}`, { headers: { Password: pass } })
       .then(
         (response) =>
           this.handleError(response) || this.serialize(User, { user })
