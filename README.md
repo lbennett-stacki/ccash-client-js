@@ -41,3 +41,17 @@ Run `yarn start` to run the examples from their corresponding directory.
 - Format source code w/ prettier: `yarn format`
 
 - Test source units w/ jest: `yarn test`
+
+If you're developing locally and using this client as a dependency, you can link the package so the local client version is used.
+
+```
+cd ccash-client-js
+yarn link
+yarn dev
+
+# and then
+
+cd your-project
+yarn add ccash-client-js # if not already in packge.json
+yarn link ccash-client-js
+```
