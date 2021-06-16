@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# [1.7.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.3...v1.7.0) (2021-06-16)
+
+
+### Bug Fixes
+
+* import missing log fn ([c692fc3](https://github.com/LukeeeeBennett/ccash-client-js/commit/c692fc3c17b4c4517664b1800dacff019ef3e73e))
+
+
+### Features
+
+* release ([d30dfe9](https://github.com/LukeeeeBennett/ccash-client-js/commit/d30dfe947d1e62de3f8211ccabd252d52b3a13bc))
+
 ## [1.6.3](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.2...v1.6.3) (2021-06-16)
 
 
