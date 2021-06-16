@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.6.3](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.2...v1.6.3) (2021-06-16)
+
+
+### Bug Fixes
+
+* unthrow exceptions, add response validators ([4f6f56f](https://github.com/LukeeeeBennett/ccash-client-js/commit/4f6f56f90df753a1bb94924cd674dd98dedc8b94))
+
 ## [1.6.2](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.1...v1.6.2) (2021-06-14)
 
 
