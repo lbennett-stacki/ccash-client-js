@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { validate } from 'class-validator';
-import debug from 'debug';
+import { LogCall } from './LogCall';
 import { ICCashClient } from './CCashClient.types';
 import {
   ApiResponse,
@@ -16,21 +16,6 @@ import {
   ExceptionMap,
   ErrorCodes,
 } from './exceptions';
-
-const log = debug('CCashClient');
-
-function LogCall(
-  target: any,
-  propertyKey: string,
-  descriptor: PropertyDescriptor
-) {
-  const original = descriptor.value;
-
-  descriptor.value = function (...args: any[]) {
-    log(`call ${propertyKey}`);
-    return original.apply(this, args);
-  };
-}
 
 export class CCashClient implements ICCashClient {
   http: AxiosInstance;
