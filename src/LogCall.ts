@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const log = debug('CCashClient');
+export const log = debug('CCashClient');
 
 export function LogCall(
   target: any,

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { validate } from 'class-validator';
-import { LogCall } from './LogCall';
+import { log, LogCall } from './LogCall';
 import { ICCashClient } from './CCashClient.types';
 import {
   ApiResponse,
