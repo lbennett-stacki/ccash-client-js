@@ -175,7 +175,7 @@ export class CCashClient implements ICCashClient {
     log('response:', response.data);
     log('validator:', Validator);
 
-    const value = response.data?.value ?? response.data;
+    const value = response.data;
 
     typeof value === 'number' && this.handleExceptions(value);
 
