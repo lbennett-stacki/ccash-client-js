@@ -1,20 +1,10 @@
 import { IsInt, IsString, IsArray, ValidateNested } from 'class-validator';
 import { LogItem } from './CCashClient.types';
 
-export interface ApiResponse<T> {
-  value: T;
-}
-
-export type ResponseValidatorConstructor<T = any> = new (
-  response: ApiResponse<T>
-) => ApiResponse<T>;
+export type ResponseValidatorConstructor<T = any> = new (response: T) => T;
 
 export class ResponseValidator<T> {
-  value: T;
-
-  constructor(response: ApiResponse<T>) {
-    this.value = response.value;
-  }
+  constructor(public readonly value: T) {}
 }
 
 export class NumberResponseValidator extends ResponseValidator<number> {

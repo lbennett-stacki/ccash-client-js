@@ -3,7 +3,6 @@ import { validate } from 'class-validator';
 import { log, LogCall } from './LogCall';
 import { ICCashClient } from './CCashClient.types';
 import {
-  ApiResponse,
   ResponseValidatorConstructor,
   NumberResponseValidator,
   LogResponseValidator,
@@ -14,7 +13,6 @@ import {
   InvalidResponseException,
   ExceptionCodes,
   ExceptionMap,
-  ErrorCodes,
 } from './exceptions';
 
 export class CCashClient implements ICCashClient {
@@ -169,7 +167,7 @@ export class CCashClient implements ICCashClient {
   }
 
   private async handleResponse<T = number>(
-    response: AxiosResponse<ApiResponse<any>>,
+    response: AxiosResponse<any>,
     Validator: ResponseValidatorConstructor = NumberResponseValidator
   ): Promise<T> {
     log('response:', response.data);
