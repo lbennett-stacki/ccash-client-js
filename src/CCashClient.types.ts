@@ -1,3 +1,5 @@
+import { ValidationError } from 'class-validator';
+
 export interface ICCashClient {
   // Usage
   balance(user: string): Promise<number>;
@@ -26,13 +28,13 @@ export interface ICCashClient {
   adminVerifyPassword(password: string): Promise<number>;
 
   // User management
-  addUser(user: string, password: string): Promise<number>;
+  addUser(user: string, password: string): Promise<number | ValidationError[]>;
   adminAddUser(
     user: string,
     password: string,
     initialPassword: string,
     initialBalance: number
-  ): Promise<number>;
+  ): Promise<number | ValidationError[]>;
   deleteUser(user: string, password: string): Promise<number>;
   adminDeleteUser(user: string, password: string): Promise<number>;
 }

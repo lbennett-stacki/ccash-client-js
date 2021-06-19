@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { validate } from 'class-validator';
+import { validate, ValidationError } from 'class-validator';
 import { log, LogCall } from './LogCall';
 import { ICCashClient } from './CCashClient.types';
 import {
@@ -7,6 +7,7 @@ import {
   NumberResponseValidator,
   LogResponseValidator,
   StringResponseValidator,
+  UserValidator,
 } from './responses';
 import {
   BaseUrlMissingException,
@@ -131,19 +132,31 @@ export class CCashClient implements ICCashClient {
   }
 
   @LogCall
-  addUser(user: string, password: string): Promise<number> {
+  async addUser(
+    user: string,
+    password: string
+  ): Promise<number | ValidationError[]> {
+    const errors = await validate(new UserValidator(user, password));
+    console.log('NO ERRORS???', errors);
+    if (errors) return errors;
+
     return this.http
       .post(`/user/${user}`, undefined, { headers: { Password: password } })
       .then((response) => this.handleResponse(response));
   }
 
   @LogCall
-  adminAddUser(
+  async adminAddUser(
     user: string,
     password: string,
     initialPassword: string,
     initialBalance: number
-  ): Promise<number> {
+  ): Promise<number | ValidationError[]> {
+    const errors = await validate(
+      new UserValidator(user, initialPassword, initialBalance)
+    );
+    if (errors) return errors;
+
     return this.http
       .post(`/admin/user/${user}`, initialPassword, {
         headers: { Password: password },
