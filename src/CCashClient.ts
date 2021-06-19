@@ -7,8 +7,8 @@ import {
   NumberResponseValidator,
   LogResponseValidator,
   StringResponseValidator,
-  UserValidator,
 } from './responses';
+import { UserValidator } from './User';
 import {
   BaseUrlMissingException,
   InvalidResponseException,
