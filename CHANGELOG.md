@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# [1.8.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.7.0...v1.8.0) (2021-06-19)
+
+
+### Features
+
+* add user creation validation ([a32d179](https://github.com/LukeeeeBennett/ccash-client-js/commit/a32d179699c361910a036f55fc089524661b2f16))
+
 # [1.7.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.6.3...v1.7.0) (2021-06-16)
 
 
