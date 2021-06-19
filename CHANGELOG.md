@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## [1.8.1](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.8.0...v1.8.1) (2021-06-19)
+
 # [1.8.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.7.0...v1.8.0) (2021-06-19)
 
 
