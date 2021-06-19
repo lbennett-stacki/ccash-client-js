@@ -137,7 +137,6 @@ export class CCashClient implements ICCashClient {
     password: string
   ): Promise<number | ValidationError[]> {
     const errors = await validate(new UserValidator(user, password));
-    console.log('NO ERRORS???', errors);
     if (errors) return errors;
 
     return this.http
