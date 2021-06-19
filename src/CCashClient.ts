@@ -137,7 +137,11 @@ export class CCashClient implements ICCashClient {
     password: string
   ): Promise<number | ValidationError[]> {
     const errors = await validate(new UserValidator(user, password));
-    if (errors) return errors;
+
+    if (errors) {
+      log('user validation errors:', errors);
+      return errors;
+    }
 
     return this.http
       .post(`/user/${user}`, undefined, { headers: { Password: password } })
@@ -154,7 +158,11 @@ export class CCashClient implements ICCashClient {
     const errors = await validate(
       new UserValidator(user, initialPassword, initialBalance)
     );
-    if (errors) return errors;
+
+    if (errors) {
+      log('user validation errors:', errors);
+      return errors;
+    }
 
     return this.http
       .post(`/admin/user/${user}`, initialPassword, {
