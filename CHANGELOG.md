@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.8.2](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.8.1...v1.8.2) (2021-06-23)
+
+
+### Bug Fixes
+
+* pass value to validator w/o object ([fe979aa](https://github.com/LukeeeeBennett/ccash-client-js/commit/fe979aa9a0f621842e144aec0fff74827be7e04b))
+
 ## [1.8.1](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.8.0...v1.8.1) (2021-06-19)
 
 # [1.8.0](https://github.com/LukeeeeBennett/ccash-client-js/compare/v1.7.0...v1.8.0) (2021-06-19)
