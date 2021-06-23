@@ -197,7 +197,7 @@ export class CCashClient implements ICCashClient {
 
     typeof value === 'number' && this.handleExceptions(value);
 
-    const errors = await validate(new Validator({ value }));
+    const errors = await validate(new Validator(value));
 
     if (errors.length > 0) {
       throw new InvalidResponseException(errors);
